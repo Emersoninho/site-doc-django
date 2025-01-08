@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import 
+from django.http import HttpResponse
 
-# Create your views here.
+# Define um view baseada em função
+def index(request):
+    # Retorne uma resposta HTTP
+    return HttpResponse('Olá Django - index')
+
+def ola(request):
+    return HttpResponse('Olá Django')
