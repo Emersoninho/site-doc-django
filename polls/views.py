@@ -1,4 +1,4 @@
-from django.shortcuts import 
+from django.shortcuts import render
 from django.http import HttpResponse
 
 # Define um view baseada em função
