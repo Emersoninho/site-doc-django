@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from polls.models import Question
+from django.contrib.auth.decorators import login_required
 
 # Define um view baseada em função
 def index(request):
@@ -9,6 +10,7 @@ def index(request):
     #return render(request, 'index.html')
     return render(request, 'index.html', {'titulo': 'bem bindo ao sistema de Enquetes'})
 
+@login_required
 def ola(request):
     #return HttpResponse('Olá Django')
     questions = Question.objects.all()
