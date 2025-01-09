@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
+    'accounts.app.AccountsConfig',
 
 ]
 
@@ -126,3 +127,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# configuração do login e logout
+LOGIN_REDIRECT_URL = '/ola/'
+LOGOUT_REDIRECT_URL = '/ola/'
