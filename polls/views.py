@@ -13,4 +13,4 @@ def ola(request):
     #return HttpResponse('Olá Django')
     questions = Question.objects.all()
     context = {'all_questions': questions}
-    return render(request, 'polls/questions.html', {context})
+    return render(request, 'polls/questions.html', context)
