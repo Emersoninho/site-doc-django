@@ -2,12 +2,15 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from polls.models import Question
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 # Define um view baseada em função
 def index(request):
     # Retorne uma resposta HTTP
     #return HttpResponse('Olá Django - index')
     #return render(request, 'index.html')
+    aviso = 'Aviso Importante: esta página não exige login'
+    messages.WARNING(request, aviso)
     return render(request, 'index.html', {'titulo': 'bem bindo ao sistema de Enquetes'})
 
 @login_required
