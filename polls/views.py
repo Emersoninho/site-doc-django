@@ -10,7 +10,7 @@ def index(request):
     #return HttpResponse('Olá Django - index')
     #return render(request, 'index.html')
     aviso = 'Aviso Importante: esta página não exige login'
-    messages.WARNING(request, aviso)
+    messages.warning(request, aviso)
     return render(request, 'index.html', {'titulo': 'bem bindo ao sistema de Enquetes'})
 
 @login_required
