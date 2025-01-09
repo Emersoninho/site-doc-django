@@ -141,3 +141,6 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.DEBUG: 'secundary',
 }
+
+#modelo personalizado
+AUTH_USER_MODEL = 'accounts.CustomUser'
