@@ -33,6 +33,7 @@ def ola(request):
 #         messages.success(self.request, self.success_message)
 #         return super(QuestionCreateView).form_valid(form)
 
+@login_required
 def question_create(request):
     context = {}
     form = QuestionForm(request.POST or None, request.FILES or None)
