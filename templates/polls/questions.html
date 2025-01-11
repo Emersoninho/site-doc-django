@@ -6,6 +6,9 @@
 
 {% block content %}
     <h1>Enquetes</h1>
+    <a href="{% url "poll_create" %}" class="btn btn-lg btn-primary fornt-weight-bold mb-5">
+        + Pergunta
+    </a>
     {% for question in all_questions %}
         <article>
             <p>{{ question.pub_date|date:'d/m/Y' }} | {{ question.question_text }}</p>
