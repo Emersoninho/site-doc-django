@@ -11,7 +11,9 @@
     </a>
     {% for question in all_questions %}
         <article>
-            <p>{{ question.pub_date|date:'d/m/Y' }} | {{ question.question_text }}</p>
+            <p>{{ question.pub_date|date:'d/m/Y' }} | {{ question.question_text }}
+               | <a href="{% url "question_update" question_id=question.id%}" class="link-secundary">Editar</a>
+            </p>
         </article>
     {% endfor %}
 {% endblock content %}
