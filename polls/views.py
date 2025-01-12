@@ -47,4 +47,17 @@ def question_update(request, question_id):
             messages.success(request, 'Pergunta criada com sucesso.')
             return redirect('index')
 
-    return render(request, 'polls/question_form.html', context)        
+    return render(request, 'polls/question_form.html', context) 
+
+@login_required
+def question_delete(request, question_id):
+    context = {}
+    question = get_object_or_404(Question, id=question_id)
+    context['object'] = question
+    
+    if request.method == 'POST':
+        question.delete()
+        messages.success(request, 'Pergunta excluida com sucesso.')
+        return redirect('index')
+    
+    return render(request, 'polls/question_confirm_delete_form.html', context)
