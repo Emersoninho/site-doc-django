@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from polls.forms import QuestionForm
 from django.urls import reverse_lazy
+from django.views.generic import DeleteView
 
 def index(request):
     aviso = 'Aviso Importante: esta página não exige login'
@@ -61,3 +62,8 @@ def question_delete(request, question_id):
         return redirect('index')
     
     return render(request, 'polls/question_confirm_delete_form.html', context)
+
+class QuestionDetailView(DeleteView):
+    model = Question
+    template_name = 'polls/question_detail.html'
+    context_object_name = 'question'

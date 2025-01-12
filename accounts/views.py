@@ -26,7 +26,7 @@ class AccountCreateView(CreateView):
 class AccountUpdateView(LoginRequiredMixin, UpdateView):
     model = User
     template_name = 'accounts/user_form.html'
-    fields = ('firstname', 'email', 'imagem',)
+    fields = ('first_name', 'email', 'imagem',)
     success_url = reverse_lazy('index')
     success_message = 'Perfil atualizado com sucesso'
 
@@ -37,7 +37,7 @@ class AccountUpdateView(LoginRequiredMixin, UpdateView):
         if user is None or not user.is_authenticated or user_id != user_id:
             return User.objects.none()
         
-        return user.objects.filter(id=user_id)
+        return User.objects.filter(id=user_id)
     
     def form_valid(self, form):
         messages.success(self.request, self.success_message)
