@@ -23,6 +23,7 @@ def question_create(request):
     context = {}
     form = QuestionForm(request.POST or None, request.FILES or None)
     context['form'] = form
+    context['form_title'] = 'Criando uma pergunta'
 
     if request.method == 'POST':
         if form.is_valid():
@@ -38,6 +39,7 @@ def question_update(request, question_id):
     question = get_object_or_404(Question, id=question_id)
     form = QuestionForm(request.POST or None, instance=question)
     context['form'] = form
+    context['form_title'] = 'Editando a pergunta'
 
     if request.method == 'POST':
         if form.is_valid():
