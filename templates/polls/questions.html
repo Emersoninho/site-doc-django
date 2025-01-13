@@ -12,7 +12,7 @@
     {% for question in all_questions %}
         <article>
             <p>{{ question.pub_date|date:'d/m/Y' }} | {{ question.question_text }}
-               | <a href="{% url 'question_detail' pk=question.id %}" class="link-secundary">Ver</a>
+               | <a href="{% url "question_detail" pk=question.id%}" class="link-secundary">Ver</a>
                | <a href="{% url "question_update" question_id=question.id%}" class="link-secundary">Editar</a>
                | <a href="{% url "question_remove" question_id=question.id%}" class="link-secundary">Excluir</a>
             </p>
