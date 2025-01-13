@@ -1,5 +1,6 @@
 from django.urls import path
 from polls.views import index, ola, question_create, question_update, question_delete
+from polls import views
 
 urlpatterns = [
     path('index/', index, name='index'),
@@ -7,4 +8,7 @@ urlpatterns = [
     path('pergunta_create/', question_create, name='poll_create'),
     path('pergunta/<int:question_id>/', question_update, name='question_update'),
     path('pergunta/<int:question_id>/remove/', question_delete, name='question_remove')
+    # rota baseada em classe pk obrigatorio
+    path('enquete/<int:pk>/show/', views.QuestionDetail.as_view(), name='question_detail'),
+    
 ]
