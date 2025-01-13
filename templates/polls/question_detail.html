@@ -8,12 +8,10 @@
         <div class="card-body">
             <p>
                 {{ question.question_text }}
-                <a href="{% url 'question_edit'  pk=question.id%}" class="link-secundary">
-                    Editar
-                </a> &npsb;
+                <a href="{% url 'question_edit'  pk=question.id%}" class="link-secundary">Editar</a> &npsb;
                 <a href="{% url 'question_delete' pk=question.id %}" class="link-secundary">Excluir</a>
             </p>
-            <p>Data paginação: {{ question.pub_date }}</p>
+            <p>Data publicação: {{ question.pub_date }}</p>
         </div>
     </div>
 {% endblock content %}
