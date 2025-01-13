@@ -7,8 +7,8 @@ urlpatterns = [
     path('ola/', ola, name='ola'),
     path('pergunta_create/', question_create, name='poll_create'),
     path('pergunta/<int:question_id>/', question_update, name='question_update'),
-    path('pergunta/<int:question_id>/remove/', question_delete, name='question_remove')
+    path('pergunta/<int:question_id>/remove/', question_delete, name='question_remove'),
     # rota baseada em classe pk obrigatorio
     path('enquete/<int:pk>/show/', views.QuestionDetailView.as_view(), name='question_detail'),
-    
+
 ]
