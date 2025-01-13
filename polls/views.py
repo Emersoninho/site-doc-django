@@ -63,6 +63,7 @@ def question_delete(request, question_id):
     
     return render(request, 'polls/question_confirm_delete_form.html', context)
 
+#views baseado em classe
 class QuestionDetailView(DeleteView):
     model = Question
     template_name = 'polls/question_detail.html'
