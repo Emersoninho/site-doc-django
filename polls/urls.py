@@ -9,6 +9,6 @@ urlpatterns = [
     path('pergunta/<int:question_id>/', question_update, name='question_update'),
     path('pergunta/<int:question_id>/remove/', question_delete, name='question_remove')
     # rota baseada em classe pk obrigatorio
-    path('enquete/<int:pk>/show/', views.QuestionDetail.as_view(), name='question_detail'),
+    path('enquete/<int:pk>/show/', views.QuestionDetailView.as_view(), name='question_detail'),
     
 ]
