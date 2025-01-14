@@ -1,0 +1,21 @@
+{% extends '_layout.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h5 class="card-title">Listagem de Perguntas</h5>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'poll_create' %}" class="btn btn-primary mb-3">Cadastrar nova pergunta</a>
+            <ul>
+                {% for question in questions %}
+                    <a href="{% url 'question_detail' pk=question.id%}" class="link-secundary">{{question.question_text}}</a>
+                {% empty %}
+                    <span>Não perguntas</span>    
+                {% endfor %}
+            </ul>
+            <p>Data publicação: {{ question.pub_date }}</p>
+        </div>
+    </div>
+{% endblock content %}
+
