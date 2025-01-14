@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from polls.forms import QuestionForm
 from django.urls import reverse_lazy
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 
 def index(request):
     aviso = 'Aviso Importante: esta página não exige login'
@@ -73,3 +73,7 @@ class QuestionListView(ListView):
     model = Question
     template_name = 'polls/question_list.html'
     context_object_name = 'questions'
+
+class SobreTemplateView(TemplateView):
+    template_name = 'polls/sobre.html'
+    
