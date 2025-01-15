@@ -12,4 +12,6 @@ urlpatterns = [
     path('enquete/<int:pk>/show/', views.QuestionDetailView.as_view(), name='question_detail'),
     path('enquete/list/', views.QuestionListView.as_view(), name='polls_list'),
     path('about-us/', views.SobreTemplateView.as_view(), name='about_page'),
+    # baseada em função
+    path('enquete/<int:question_id>/vote/', views.vote, name='poll_vote'),
 ]
