@@ -12,6 +12,11 @@
                 <a href="{% url 'question_remove' question_id=question.id%}" class="link-secundary">Excluir</a>
             </p>
             <p>Data publicação: {{ question.pub_date }}</p>
+            {% for choice in question.choice_set.all %}
+                <p>{{ choice.id }} - {{ choice.choice_text }}</p>
+            {% empty %}
+                <h5>Não há alternativas cadastradas</h5>    
+            {% endfor %}
         </div>
     </div>
 {% endblock content %}
