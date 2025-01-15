@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from polls.models import Question
+from polls.models import Question, Choice
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from polls.forms import QuestionForm
@@ -69,6 +69,13 @@ class QuestionDetailView(DetailView):
     template_name = 'polls/question_detail.html'
     context_object_name = 'question'
 
+    def get_context_data(self, **kwargs):
+        context = super(QuestionDetailView).get_context_data(**kwargs)
+        question = kwargs.get('objects')
+        context['total_votes'] = question.get_total_votes()
+
+        return context
+
 class QuestionListView(ListView):
     model = Question
     template_name = 'polls/question_list.html'
@@ -77,3 +84,18 @@ class QuestionListView(ListView):
 class SobreTemplateView(TemplateView):
     template_name = 'polls/sobre.html'
     
+def vote(request, question_id):
+    question = get_object_or_404(Question, id=question_id)
+    if request.method == 'POST':
+        try:
+            selected_choice = question.choice_set.get(id=request.POST['choice'])
+        except (KeyError, Choice.DoesNotExist):
+            messages.error(request, 'Selecione uma alternativa para votar')
+        else:
+            selected_choice.votes += 1
+            selected_choice.save()
+            messages.success(request, 'Voto realizado com sucesso')
+            return redirect(reverse_lazy('question_detail', args={question.id,}))
+        
+    context = {'question': question}    
+    return render(request, 'polls/question_detail.html', context)
