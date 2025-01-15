@@ -7,3 +7,11 @@ class Question(models.Model):
     class Meta:
         verbose_name = 'pergunta'
         verbose_name_plural = 'perguntas'
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.choice_text
