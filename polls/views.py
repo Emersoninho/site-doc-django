@@ -99,3 +99,10 @@ def vote(request, question_id):
         
     context = {'question': question}    
     return render(request, 'polls/question_detail.html', context)
+
+def results(request, question_id):
+    question = get_object_or_404(question, pk=question_id)
+    context = {'question':question}
+    context['votes'] = question.get_results()
+
+    return render(request, 'polls/results.html', context)    
