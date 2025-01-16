@@ -1,5 +1,5 @@
 from django.urls import path
-from polls.views import index, ola, question_create, question_update, question_delete
+from polls.views import index, ola, question_create, question_update, question_delete, vote, results
 from polls import views
 
 urlpatterns = [
@@ -14,4 +14,5 @@ urlpatterns = [
     path('about-us/', views.SobreTemplateView.as_view(), name='about_page'),
     # baseada em função
     path('enquete/<int:question_id>/vote/', views.vote, name='poll_vote'),
+    path('enquete/<int:question_id>/results/', views.results, name='poll_results'),
 ]

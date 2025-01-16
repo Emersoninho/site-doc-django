@@ -21,7 +21,7 @@ class Question(models.Model):
         votes = []
         for choice in self.choice_set.all():
             percentage = 0
-            if choice.votes > and total_votes > 0:
+            if choice.votes > 0 and total_votes > 0:
                 percentage = choice.votes / total_votes * 100
 
             votes.append({
